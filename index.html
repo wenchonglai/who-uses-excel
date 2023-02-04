@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    const handleChange = (e) => {
+      console.log(e.target.value)
+    }
+
+    window.onload = () => {
+      const textbox = document.getElementById('textarea')
+      const paragraph = document.getElementById('result')
+
+      textbox.addEventListener('input', (e) => {
+        const value = e.target.value
+        paragraph.innerHTML = new Set([...value.split(/[\t\n]+/)]).size
+      })
+
+      
+    }
+  </script>
+  <body>
+    <h2>Paste your excel values here</h2>
+    <textarea style="width:100%; height: 300px" id="textarea"></textarea>
+    
+    <div style="display: flex; align-items: center;">
+      <div><h4>Unique Values:</h4></div>
+      <div style="margin-left: 10px">
+        <p id="result"></p>
+      </div>
+    </div>
+  </body>
+</html>
