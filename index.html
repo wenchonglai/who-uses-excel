@@ -11,7 +11,7 @@
 
       textbox.addEventListener('input', (e) => {
         const value = e.target.value
-        paragraph.innerHTML = new Set([...value.split(/[\t\n]+/)]).size
+        paragraph.innerHTML = new Set([...value.split(/[\t\n]+/).map(x => x.trim())]).size
       })
 
       
