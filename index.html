@@ -7,11 +7,14 @@
 
     window.onload = () => {
       const textbox = document.getElementById('textarea')
-      const paragraph = document.getElementById('result')
+      const countParagraph = document.getElementById('count')
+      const valuesParagraph = document.getElementById('values')
 
       textbox.addEventListener('input', (e) => {
         const value = e.target.value
-        paragraph.innerHTML = new Set([...value.split(/[\t\n]+/).map(x => x.trim()).filter(x => x !== '')]).size
+        const newSet = new Set([...value.split(/[\t\n]+/).map(x => x.trim()).filter(x => x !== '')])
+        countParagraph.innerHTML = newSet.size
+        valuesParagraph.innerText = [...newSet].sort().join('\t')
       })
 
       
@@ -22,9 +25,17 @@
     <textarea style="width:100%; height: 300px" id="textarea"></textarea>
     
     <div style="display: flex; align-items: center;">
-      <div><h4>Unique Values:</h4></div>
+      <div><h4>Number of Unique Values:</h4></div>
       <div style="margin-left: 10px">
-        <p id="result"></p>
+        <p id="count"></p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <div>
+        <h4>Unique Values:</h4>
+      </div>
+      <div style="margin-left: 10px">
+        <p id="values"></p>
       </div>
     </div>
   </body>
